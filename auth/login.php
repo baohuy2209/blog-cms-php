@@ -2,7 +2,7 @@
 <?php require "../config/config.php" ?>
 <?php 
     if(isset($_SESSION['username'])){
-        header('location: http://localhost/php-project/clean-blog/index.php');
+        header("Location: ".APPURL."/index.php");
     }
     if(isset($_POST['submit'])){
         if($_POST['email'] == '' OR $_POST['password'] == ''){
@@ -19,7 +19,7 @@
                     $_SESSION['username'] = $data['username'];
                     $_SESSION['email'] = $data['email'];
                     $_SESSION['user_id'] = $data['id']; 
-                    header("Location: ../index.php");
+                    header("location: ".APPURL."/index.php");
                 }else{
                     echo "Incorrect password"; 
                 }

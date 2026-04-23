@@ -2,7 +2,7 @@
 <?php include '../config/config.php'; ?>
 <?php 
   if(isset($_SESSION['username'])){
-      header('location: http://localhost/php-project/clean-blog/index.php');
+      header("location: ".APPURL."/index.php");
   }
   if(isset($_POST['submit'])){
     if($_POST['username'] == '' OR $_POST['password'] == '' OR $_POST['email'] == ''){

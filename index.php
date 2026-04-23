@@ -1,8 +1,9 @@
 <?php require "includes/header.php" ?>
+<?php require "config/config.php"?>
 <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
         <!-- Post preview-->
-        <?php echo "Hello ".$_SESSION['username']; ?> <div class="post-preview">
+        <div class="post-preview">
             <a href="posts/post.html">
                 <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
                 <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>

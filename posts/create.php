@@ -11,17 +11,19 @@
             $subtitle = $_POST['subtitle']; 
             $img = $_FILES['img']['name']; 
             $user_id = $_SESSION['user_id'];
+            $user_name = $_SESSION['username'];
             $dir = '../images/'.basename($img);
-            $insert = $conn->prepare("INSERT INTO posts (title, subtitle, body, img, user_id) VALUES (:title, :subtitle, :body, :img, :user_id)");
+            $insert = $conn->prepare("INSERT INTO posts (title, subtitle, body, img, user_id, username) VALUES (:title, :subtitle, :body, :img, :user_id, :username)");
             $insert->execute([
                 ':title' => $title, 
                 ':body' => $body, 
                 ':subtitle' => $subtitle, 
                 ':img' => $img,
-                ':user_id' => $user_id
+                ':user_id' => $user_id, 
+                ':username' => $user_name
             ]);
             if(move_uploaded_file($_FILES['img']['tmp_name'], $dir)){
-                header('location: http://localhost/php-project/clean-blog/index.php'); 
+                header("location: ".APPURL."/index.php"); 
             }
         }
     }
