@@ -1,13 +1,17 @@
-<?php require "includes/header.php" ?>
-<?php require "config/config.php"?>
+<?php require "../includes/header.php" ?>
+<?php require "../config/config.php"?>
 <?php 
-    $selectAll = $conn->query("SELECT * FROM posts");
-    $selectAll->execute();
-    $posts = $selectAll->fetchAll(PDO::FETCH_OBJ); 
-
     $selectAllCategories = $conn->query("SELECT * FROM categories");
     $selectAllCategories->execute();
     $categories = $selectAllCategories->fetchAll(PDO::FETCH_OBJ); 
+    if(isset($_GET["category_id"])){
+        $category_id = $_GET["category_id"];
+        $selectAll = $conn->query("SELECT * FROM posts WHERE category_id = '$category_id'");
+        $selectAll->execute();
+        $posts = $selectAll->fetchAll(PDO::FETCH_OBJ); 
+    }else{
+        header("location: ".APPURL."/index.php");
+    }
 ?>
 <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -44,4 +48,5 @@
     </div>
     <?php endforeach; ?>
 </div>
-<?php require "includes/footer.php" ?>
+
+<?php require "../includes/footer.php" ?>
