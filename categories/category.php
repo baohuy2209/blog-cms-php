@@ -1,12 +1,13 @@
 <?php require "../includes/header.php" ?>
 <?php require "../config/config.php"?>
 <?php 
+    
     $selectAllCategories = $conn->query("SELECT * FROM categories");
     $selectAllCategories->execute();
     $categories = $selectAllCategories->fetchAll(PDO::FETCH_OBJ); 
     if(isset($_GET["category_id"])){
         $category_id = $_GET["category_id"];
-        $selectAll = $conn->query("SELECT * FROM posts WHERE category_id = '$category_id'");
+        $selectAll = $conn->query("SELECT * FROM posts WHERE category_id = '$category_id' AND status=1");
         $selectAll->execute();
         $posts = $selectAll->fetchAll(PDO::FETCH_OBJ); 
     }else{

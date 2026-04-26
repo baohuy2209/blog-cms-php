@@ -18,6 +18,6 @@
         ]);
         header("location: http://localhost/blog-cms-php/index.php");
     }else{
-        echo "404";
+        header("location: http://localhost/blog-cms-php/404.php");   
     }
 ?>

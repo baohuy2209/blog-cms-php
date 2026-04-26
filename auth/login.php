@@ -6,7 +6,11 @@
     }
     if(isset($_POST['submit'])){
         if($_POST['email'] == '' OR $_POST['password'] == ''){
-            echo "Please enter all fields to login"; 
+            echo "
+            <div class='alert alert-danger text-center' role='alert'>
+                Please enter all fields to login
+            </div>
+            "; 
         }else{
             $email = $_POST["email"];
             $password = $_POST["password"];
@@ -21,10 +25,18 @@
                     $_SESSION['user_id'] = $data['id']; 
                     header("location: ".APPURL."/index.php");
                 }else{
-                    echo "Incorrect password"; 
+                    echo "
+                    <div class='alert alert-danger text-center' role='alert'>
+                        Invalid password
+                    </div>
+                    "; 
                 }
             }else{
-                echo "No user found with that email"; 
+                echo "
+                <div class='alert alert-danger text-center' role='alert'>
+                    No user found with that email
+                </div>
+                "; 
             }
         }
     }

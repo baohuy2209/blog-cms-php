@@ -1,7 +1,7 @@
 <?php require "includes/header.php" ?>
 <?php require "config/config.php"?>
 <?php 
-    $selectAll = $conn->query("SELECT * FROM posts");
+    $selectAll = $conn->query("SELECT * FROM posts WHERE status=1");
     $selectAll->execute();
     $posts = $selectAll->fetchAll(PDO::FETCH_OBJ); 
 

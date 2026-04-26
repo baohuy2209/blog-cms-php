@@ -6,7 +6,11 @@
   }
   if(isset($_POST['submit'])){
     if($_POST['username'] == '' OR $_POST['password'] == '' OR $_POST['email'] == ''){
-      echo "You must enter all field when you register new account";
+      echo "
+        <div class='alert alert-danger text-center' role='alert'>
+          You must enter all field when you register 
+        </div>
+      ";
     } else {
       $email = $_POST["email"];
       $password = $_POST["password"];
@@ -15,7 +19,11 @@
       $checkEmailDuplicate = $conn->query("SELECT * FROM users WHERE email = '$email'");
       $checkEmailDuplicate->execute();
       if($checkEmailDuplicate->rowCount() > 0){
-        echo "Email already exists"; 
+        echo "
+        <div class='alert alert-danger text-center' role='alert'>
+          Email already exists 
+        </div>
+        "; 
       }else{
         $insert = $conn->prepare("INSERT INTO users (email, username, password) VALUES (:email, :username,:password)");
         $insert->execute([
